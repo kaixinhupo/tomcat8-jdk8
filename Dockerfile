@@ -1,7 +1,12 @@
 FROM pinzhikeji/jdk8:1.0
 
+RUN yum install -y kde-l10n-Chinese \
+    && yum install -y glibc-common \
+    && localedef -c -f UTF-8 -i zh_CN zh_CN.UFT-8
 
-RUN echo "Downloading tomcat" \ 
+ENV LC_ALL zh_CN.uft8
+
+RUN echo "downloading tomcat" \ 
     && wget http://image.xiniudada.top/file/apache-tomcat-8.5.59.tar.gz \
     -q -O /tmp/tomcat8.tar.gz
 
